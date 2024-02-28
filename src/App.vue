@@ -1,6 +1,8 @@
 <template>
     <div id="app">
-        <router-view/>
+        <div class="app_container">
+            <router-view/>
+        </div>
     </div>
 </template>
 
@@ -20,5 +22,12 @@
     color: var(--general-text);
     height: 100vh;
     width: 100vw;
+}
+
+.app_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 </style>
