@@ -14,6 +14,8 @@
 
             <div class="todo__content">
                 <Filters></Filters>
+
+                <Tasks></Tasks>
             </div>
         </div>
     </div>
@@ -21,10 +23,11 @@
 
 <script>
 import Filters from '@/components/Filter';
+import Tasks from '@/components/Tasks';
 
 export default {
     name: 'ToDo',
-    components: { Filters, },
+    components: { Filters, Tasks, },
     data() {
         return {
             modeChange: true,
@@ -67,5 +70,13 @@ export default {
 
 .header-btn .fa {
     cursor: pointer;
+}
+
+.todo__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+    gap: 20px;
 }
 </style>

@@ -55,7 +55,7 @@ export default {
     margin-top: 15px;
     border-radius: 10px;
     height: 70vh;
-    width: 30vw;
+    width: 20vw;
 }
 
 .title {
