@@ -34,4 +34,16 @@ button:hover {
     border: none;
     color: var(--general-text);
 }
+
+@media screen and (max-width: 750px) {
+    button {
+        width: 200px;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    button {
+        width: 120px;
+    }
+}
 </style>

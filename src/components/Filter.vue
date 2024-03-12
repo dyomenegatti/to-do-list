@@ -31,7 +31,7 @@
                         Dyovana Menegatti
                     </div>
                 </div>
-                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -99,11 +99,12 @@ export default {
 .underline {
     width: 100%;
     height: 1px;
-    background: var(--general-text);
+    background: var(--tertiary);
 }
 
 .copyright {
     text-align: center;
     font-size: 0.7rem;
+    color: var(--tertiary);
 }
 </style>

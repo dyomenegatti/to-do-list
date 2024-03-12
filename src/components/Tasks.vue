@@ -14,10 +14,22 @@
                         <i class="fa fa-circle-thin"></i>
                         <label for="">Item 1</label>
                     </div>
-                    <div class="task__actions">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-pencil"></i>
-                        <i class="fa fa-trash"></i>
+                    <div class="task__actions actions">
+                        <div class="actions">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-pencil"></i>
+                            <i class="fa fa-trash"></i>
+                        </div>
+
+                        <div class="actions-menu">
+                            <i class="fa fa-ellipsis-v" @click="openActions"></i>
+
+                            <div v-if="actionsMenu" class="menu-dropdown">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-pencil"></i>
+                                <i class="fa fa-trash"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -29,7 +41,17 @@
 import ButtonNew from '@/components/ButtonNew';
 
 export default {
-    components: { ButtonNew, }    
+    components: { ButtonNew, },
+    data() {
+        return {
+            actionsMenu: false,
+        }
+    },
+    methods: {
+        openActions() {
+            this.actionsMenu = !this.actionsMenu;
+        },
+    }    
 }
 </script>
 
@@ -78,12 +100,50 @@ export default {
     cursor: pointer;
 }
 
-.task__actions {
+.task__actions .actions {
     display: flex;
     gap: 10px;
 }
 
 .task__actions .fa {
     cursor: pointer;
+}
+
+.actions-menu {
+    display: none;
+    position: relative;
+}
+
+.menu-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--background-second);
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 0 2px 5px rgba(236, 236, 236, 0.1);
+    color: var(--general-text);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+@media screen and (max-width: 750px) {
+    .task__actions .actions {
+        display: none;
+    }
+
+    .actions-menu {
+        display: block;   
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .tasks__container {
+        width: 80vw;
+    }
 }
 </style>
