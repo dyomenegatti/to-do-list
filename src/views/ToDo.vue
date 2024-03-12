@@ -2,18 +2,31 @@
     <div class="todo">
         <div class="todo__container">
             <div class="todo__header">
-                <div class="header-title">
-                    <h1><span class="mode_title">to</span>do.</h1>
+                <div class="header__title">
+                    <h1><span class="title">to</span>do.</h1>
                 </div>
 
-                <div class="header-btn">
-                    <i class="fa fa-sun-o" @click="handleMode" v-if="modeChange"></i>
-                    <i class="fa fa-moon-o" @click="handleMode" v-else></i>
+                <div class="header__btn">
+                    <i class="fa fa-sun-o" @click="toggleDarkLightMode" v-if="darkLightMode"></i>
+                    <i class="fa fa-moon-o" @click="toggleDarkLightMode" v-else></i>
                 </div>
             </div>
 
             <div class="todo__content">
-                <Filters></Filters>
+                <Filters
+                    class="content__filter"
+                ></Filters>
+
+                <Tasks
+                    class="content__tasks"
+                ></Tasks>
+            </div>
+
+            <div class="todo__footer">
+                <div class="underline"></div>
+                <div class="copyright">
+                    Dyovana Menegatti
+                </div>
             </div>
         </div>
     </div>
@@ -21,18 +34,19 @@
 
 <script>
 import Filters from '@/components/Filter';
+import Tasks from '@/components/Tasks';
 
 export default {
     name: 'ToDo',
-    components: { Filters, },
+    components: { Filters, Tasks, },
     data() {
         return {
-            modeChange: true,
+            darkLightMode: true,
         }
     },
     methods: {
-        handleMode() {
-            this.modeChange = !this.modeChange;
+        toggleDarkLightMode() {
+            this.darkLightMode = !this.darkLightMode;
         },
     },
 }
@@ -57,15 +71,55 @@ export default {
     width: 100%;
 }
 
-.header-title {
+.header__title {
     color: var(--primary);
 }
 
-.mode_title {
+.title {
     color: var(--general-text);
 }
 
-.header-btn .fa {
+.header__btn .fa {
     cursor: pointer;
+}
+
+.todo__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+    gap: 20px;
+}
+
+.todo__footer {
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    gap: 10px;
+}
+
+.underline {
+    width: 100%;
+    height: 1px;
+    background: var(--tertiary);
+}
+
+.copyright {
+    text-align: center;
+    font-size: 0.7rem;
+    color: var(--tertiary);
+}
+
+@media screen and (max-width: 550px) {
+    .content__filter {
+        display: none;
+    }
+
+    .todo__footer {
+        margin-top: 20px;
+        display: flex;
+    }
 }
 </style>
